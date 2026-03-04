@@ -1,6 +1,6 @@
-import { supabase } from "@/lib/supabase";
-import { pickWinnersWeighted } from "@/lib/logic";
-import { requireCron } from "@/lib/auth";
+import { supabase } from "../../../lib/supabase";
+import { pickWinnersWeighted } from "../../../lib/logic";
+import { requireCron } from "../../../lib/auth";
 
 export async function GET(req: Request) {
   if (!requireCron(req)) return new Response("Unauthorized", { status: 401 });
