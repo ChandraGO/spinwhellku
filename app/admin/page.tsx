@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { toUtcISOStringFromWitaLocalInput } from "@/lib/logic";
+import { toUtcISOStringFromWitaLocalInput } from "../../lib/logic";
 
 function askAuthHeader() {
   const pass = prompt("Admin password:") || "";
