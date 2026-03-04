@@ -1,5 +1,5 @@
-import { supabase } from "@/lib/supabase";
-import { requireAdmin } from "@/lib/auth";
+import { supabase } from "../../../../lib/supabase";
+import { requireAdmin } from "../../../../lib/auth";
 
 export async function GET() {
   const { data, error } = await supabase.from("config").select("*").eq("id", 1).single();
