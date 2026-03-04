@@ -1,5 +1,5 @@
-import { supabase } from "@/lib/supabase";
-import { pickWinnersWeighted } from "@/lib/logic";
+import { supabase } from "../../../lib/supabase";
+import { pickWinnersWeighted } from "../../../lib/logic";
 
 export async function POST() {
   const { data: cfg, error: cfgErr } = await supabase.from("config").select("*").eq("id", 1).single();
