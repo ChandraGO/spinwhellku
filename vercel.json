@@ -1,8 +1,5 @@
 {
   "crons": [
-    {
-      "path": "/api/cron?secret=$CRON_SECRET",
-      "schedule": "* * * * *"
-    }
+    { "path": "/api/cron?secret=$CRON_SECRET", "schedule": "5 0 * * *" }
   ]
 }
