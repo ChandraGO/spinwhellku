@@ -7,7 +7,7 @@ export async function POST() {
 
   const { data: participants, error: pErr } = await supabase
     .from("participants")
-    .select("id,name,points")
+    .select("id,name,points,created_at")
     .order("created_at", { ascending: true });
 
   if (pErr) return Response.json({ error: pErr.message }, { status: 500 });
@@ -18,8 +18,22 @@ export async function POST() {
 
   const winners = pickWinnersWeighted(participants as any, spins, allowSameWinner);
 
+  // ✅ simpan winners biar tampil di panel kanan juga
+  const runKey = `manual:${new Date().toISOString()}`;
+  const rows = winners.map((w: any) => ({
+    participant_id: w.id,
+    participant_name: w.name,
+    points: w.points,
+    prize_title: cfg.prize_title,
+    run_key: runKey,
+  }));
+
+  const { error: wErr } = await supabase.from("winners").insert(rows);
+  if (wErr) return Response.json({ error: wErr.message }, { status: 500 });
+
   return Response.json({
     winners,
     prize_title: cfg.prize_title,
+    run_key: runKey,
   });
 }
