@@ -1,7 +1,7 @@
-import { supabase } from "@/lib/supabase";
+import { supabase } from "../lib/supabase";
 import WheelClient from "./wheel-client";
-import { ParticipantsList } from "@/components/ParticipantsList";
-import { WinnersPanel } from "@/components/WinnersPanel";
+import { ParticipantsList } from "../components/ParticipantsList";
+import { WinnersPanel } from "../components/WinnersPanel";
 
 export default async function Page() {
   const { data: participants } = await supabase
