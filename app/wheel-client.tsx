@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Wheel } from "@/components/Wheel";
+import { Wheel } from "../components/Wheel";
 
 type Participant = { id: string; name: string; points: number };
 
